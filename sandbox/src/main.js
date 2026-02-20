@@ -1,0 +1,31 @@
+import Phaser from "phaser";
+
+// config options usually go here, although they could be easily defined directly
+// in the function call to the Phaser.Game method
+const config = {
+    type: Phaser.AUTO,
+    width: 800,
+    height: 600,
+    scene: {
+        preload: preload,
+        create: create,
+        update: update
+    }
+}
+
+const game = new Phaser.Game(config);
+
+// preload assets used in the game. spritesheets are loaded by specifying framewidth and height
+// apparently
+function preload() {
+    this.load.image('sky', 'assets/sky.png');
+    this.load.image('ground', 'assets/platform.png');
+    this.load.image('star', 'assets/star.png');
+    this.load.image('bomb', 'assets/bomb.png');
+    this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
+}
+function create() {
+    this.add.image(400, 300, 'sky')
+    this.add.image(400, 300, 'star')
+}
+function update() {}
